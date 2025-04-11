@@ -1,71 +1,54 @@
-# ESIEA-GameJam2025-TheMasters
+# React + TypeScript + Vite
 
-## Règles
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- entre 11 avril 19h et 13 avril à 19h
-- doit respecter le thème
-- target windows
-- max 5 personnes
-- pas de moteur ou assets payant
-- assets gratuit mais avec licence
-- moteurs libres
-- plagiat/non attribution interdit
-- 4 jury
-- Thème : Dualité
+Currently, two official plugins are available:
 
-## Brainstorm
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Entraide obligatoire mais 2 buts différents
+## Expanding the ESLint configuration
 
-💡 Ombre et lumière !
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-Un personnage qui se balade dans le noir de la page (déplacement avec les flèches ou zqsd)
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-La souris permet de pointer une "lampe"
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-Des monstres rôdent dans le noir quand ils ne sont pas éclairés
-Leurs yeux (rouges)
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-Des interrupteurs doivent êtres éclairés pour ouvrir des portes/des ponts
-
-Bonus/ : rayon de la lampe
-
-gestion pile
-
-Repousser les monstres avec la lumière pour leur faire activer les interrupteurs
-
-Quelle ambiance ?
-1980
-Lampe torche
-
-## Histoire
-
-ça commence de nuit, on est en camping avec des potes
-ils commencent a pleuvoir, ils rentrent dans leur tentes
-le feu meurt
-grand silence
-éclair, on voit plein de monstres autour
-le personnage s'enfuit
-l'orage gronde
-sur le chemin les copain dans des situations cornéliennes
-les bestioles font du bruit quand elle sont découverte
-choix de sauver les potes ou rester en vie mais choix rapides
-seul à la fin les monstres le bouffent
-si +50% des potes sont sauvés tu survis
-
-## TODO :
-
-- [ ] lumière suivie sur la souris
-- [ ] plus elle est loin du personnage, moins elle est forte
-- [ ] les objets éclairages "projettent" (skew) leur ombre depuis le personnage
-- [ ] les monstres qui "chassent", s'approchent
-- [ ] on ne voit que leurs yeux et fuient a la lumière
-- [ ] Des bonus permettent d'augmenter la taille de la lampe
-- [ ] Des malus permettent de diminuer la taille de la lampe
-- [ ] Orage qui gronde, pluie et les éclairs (qui illuminent)
-- [ ] Les bestioles font du bruit quand elle sont découverte
-- [ ] Setup
-
-Quentin dispo a 23h
-
-
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
