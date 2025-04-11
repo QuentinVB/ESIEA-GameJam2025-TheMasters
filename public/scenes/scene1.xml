@@ -1,5 +1,8 @@
 <game-scene>
+<<<<<<< HEAD
     <game-lightsource></game-lightsource>
+=======
+>>>>>>> 92a630035ef802deb6e0f741b6795a4ca68786b1
     <game-item x="400" y="200">
         <scenarii>
             <step duration="12">
@@ -8,4 +11,8 @@
         </scenarii>
 
     </game-item>
+<<<<<<< HEAD
+=======
+    <game-follower></game-follower>
+>>>>>>> 92a630035ef802deb6e0f741b6795a4ca68786b1
 </game-scene>
