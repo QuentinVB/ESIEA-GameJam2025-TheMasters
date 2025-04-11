@@ -1,4 +1,5 @@
 <game-scene>
+    <game-lightsource></game-lightsource>
     <game-item x="400" y="200">
         <scenarii>
             <step duration="12">
@@ -7,5 +8,4 @@
         </scenarii>
 
     </game-item>
-    <game-follower></game-follower>
 </game-scene>

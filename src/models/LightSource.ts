@@ -1,21 +1,23 @@
 import Position from "../interfaces/Position";
+import GameObject from "./GameObject";
+//import "./follower.css";
+export default class LightSource extends GameObject {
+  position: Position;
+  radius: number;
+  sprite: string = "";
+  color: string;
 
-export default class LightSource {
-    position: Position;
-    radius: number;
-    sprite: string = "";
-    color: string;
+  constructor(radius: number, color?: string) {
+    super();
+    this.position = this.mouseStatus();
+    this.radius = radius;
+    this.color = color || "#FEEFD5" || String(this.getAttribute("color"));
 
-
-    constructor(position: Position, radius: number, color?: string) {
-        this.position = position
-        this.radius = radius
-        this.color = color || "#FEEFD5"
-
-    }
-
-    render(children?: string): string {
-        return (`
+    //this.classList.add("follower");
+    //TODO : handle node children
+  }
+  connectedCallback() {
+    this.innerHTML = `
             <svg
             class="layer"
             width="100%"
@@ -29,12 +31,15 @@ export default class LightSource {
             <svg x="${this.position.x - this.radius}" y="${this.position.y - this.radius}" >
             
             <circle cx="${this.radius}" cy="${this.radius}"  r="${this.radius}" fill="${this.color}" filter="url(#blurMe)" />
-            <svg x="${this.radius}" y="${this.radius}" >
-            ${children}
             </svg>
             </svg>
-            </svg>
-            `)
-    }
+            `;
+  }
+  disconnectedCallback() {
+    console.log("Custom square element removed from page.");
+  }
 
+  adoptedCallback() {
+    console.log("Custom square element moved to new page.");
+  }
 }
