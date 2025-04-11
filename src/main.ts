@@ -1,7 +1,11 @@
 import { Fire } from "./components/lightSource/fire";
 import { FlashLight } from "./components/lightSource/flashlight"
 import { mousePosition } from "./mouseManager";
+import Follower from './class/follower';
 import Scene from './class/scene';
+window.customElements.define("game-scene", Scene);
+window.customElements.define("game-follower", Follower);
+
 import './style.css'
 
 
@@ -23,7 +27,6 @@ const main = () => {
 
 requestAnimationFrame(main)
 
-window.customElements.define("game-scene", Scene);
 
 //const scene = document.createElement("game-scene") as Scene;
 
