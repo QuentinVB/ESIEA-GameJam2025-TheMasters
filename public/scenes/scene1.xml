@@ -1,4 +1,11 @@
 <game-scene>
+    <game-item x="400" y="200">
+        <scenarii>
+            <step duration="12">
+                <action type="playsound">
+            </step>
+        </scenarii>
 
-<game-follower></game-follower>
+    </game-item>
+    <game-follower></game-follower>
 </game-scene>

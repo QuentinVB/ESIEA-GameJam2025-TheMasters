@@ -1,8 +1,10 @@
 import Follower from './class/follower';
+import Item from './class/item';
 import Scene from './class/scene';
 import './style.css'
 window.customElements.define("game-scene", Scene);
 window.customElements.define("game-follower", Follower);
+window.customElements.define("game-item", Item);
 
 //const scene = document.createElement("game-scene") as Scene;
 

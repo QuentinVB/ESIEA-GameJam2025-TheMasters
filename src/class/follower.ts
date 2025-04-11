@@ -5,7 +5,7 @@ export default class Follower extends HTMLElement {
   }
   connectedCallback() {
     this.innerText = "😎";
-    this.classList.add("item");
+    this.classList.add("follower");
 
     document.addEventListener("mousemove",e=>{
         this.style.left=e.pageX+"px";
