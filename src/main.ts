@@ -1,24 +1,23 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { Fire } from "./components/lightSource/fire";
+import { FlashLight } from "./components/lightSource/flashlight"
+import { mousePosition } from "./mouseManager";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+
+
+const addAssets = () => {
+  const lights = document.querySelector<HTMLDivElement>('#light')
+  var content = ""
+  content += Fire({ x: 500, y: 500 })
+  content += FlashLight(mousePosition)
+  lights!.innerHTML = content
+}
+
+const main = () => {
+  addAssets()
+  requestAnimationFrame(main)
+
+
+}
+
+requestAnimationFrame(main)
