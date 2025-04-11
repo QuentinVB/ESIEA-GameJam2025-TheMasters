@@ -2,9 +2,11 @@ import { Fire } from "./components/lightSource/fire";
 import { FlashLight } from "./components/lightSource/flashlight"
 import { mousePosition } from "./mouseManager";
 import Follower from './class/follower';
+import Item from './class/item';
 import Scene from './class/scene';
 window.customElements.define("game-scene", Scene);
 window.customElements.define("game-follower", Follower);
+window.customElements.define("game-item", Item);
 
 import './style.css'
 
