@@ -4,7 +4,6 @@ export default class Scene extends HTMLElement {
     super();
   }
   connectedCallback() {
-    this.innerText = "toto";
     this.classList.add("scene");
   }
   disconnectedCallback() {

@@ -1,1 +1,4 @@
-<game-scene></game-scene>
+<game-scene>
+
+<game-follower></game-follower>
+</game-scene>
