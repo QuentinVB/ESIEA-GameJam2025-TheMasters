@@ -1,5 +1,5 @@
 body {
-  background-color: #090913;
+  background-color: #080808;
   height: 100vh;
   mix-blend-mode: color-dodge;
 }
@@ -8,6 +8,7 @@ body {
   width: 100%;
   height: 100%;
   background-image: url("/images/grassTile.png"); 
+  opacity: 0.2;
 }
 
 html {
