@@ -3,7 +3,7 @@ import Character from "../models/Character";
 import LightSource from "../models/LightSource";
 import { battery } from "../services/gameProvider";
 import { mousePosition } from "../services/mouseManager";
-import { translation } from "../services/TranslationProvider";
+import { translation } from "../services/translationProvider";
 
 export const scene = [
     new LightSource({ x: 200, y: 200 }, () => 80, "#EED094"),
