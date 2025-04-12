@@ -1,22 +1,21 @@
+import IGameObject from "../interfaces/IGameObject";
 import Position from "../interfaces/Position";
-import GameObject from "./GameObject";
+import Pawn from "./Pawn";
 
-export default class LightSource extends GameObject {
-  constructor(
-    
-    public position: Position,
-    public getRadius: () => number,
-    public color?: string
-  ) {
-    super(position, getRadius());
+export default class LightSource extends Pawn {
+  color: string
+
+  constructor(position: Position, getRadius: () => number, color?: string) {
+    super(position, getRadius(), "light", 0)
+    this.color = color || "blue"
   }
 
   render(children?: string): string {
-    const radius = this.getRadius();
-    const isCollide = this.collisionBox.isCollide()
+    // const radius = this.getRadius();
+    // const isCollide = this.collisionBox.isCollide()
     
     return (`
-            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.getRadius()}px; left:${this.position.x - this.getRadius()}px; width:${this.getRadius()*2}px; height:${this.getRadius()*2}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
+            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.radius}px; left:${this.position.x - this.radius}px; width:${this.radius*2}px; height:${this.radius*2}px; border: 1px solid ${this.isCollide ? "yellow" : "blue"}" ></div>
             <svg
             class="layer"
             width="100%"
@@ -27,12 +26,12 @@ export default class LightSource extends GameObject {
                 <feBlend in="SourceGraphic"  mode="color-dodge" />
                 <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
             </filter>
-            <svg x="${this.position.x - radius * 2}" y="${this.position.y - radius * 2}" >
+            <svg x="${this.position.x - this.radius * 2}" y="${this.position.y - this.radius * 2}" >
             
-            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius}" fill="${this.color}EE" filter="url(#blurMe)" />
-            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius * 2}" fill="${this.color}05" filter="url(#blurMe)" />
-            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius * 1.5}" fill="${this.color}12" filter="url(#blurMe)" />
-            <svg x="${radius}" y="${radius}" >
+            <circle cx="${this.radius * 2}" cy="${this.radius * 2}" r="${this.radius}" fill="${this.color}EE" filter="url(#blurMe)" />
+            <circle cx="${this.radius * 2}" cy="${this.radius * 2}" r="${this.radius * 2}" fill="${this.color}05" filter="url(#blurMe)" />
+            <circle cx="${this.radius * 2}" cy="${this.radius * 2}" r="${this.radius * 1.5}" fill="${this.color}12" filter="url(#blurMe)" />
+            <svg x="${this.radius}" y="${this.radius}" >
             ${children}
             </svg>
             </svg>

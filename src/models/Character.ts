@@ -1,31 +1,23 @@
 import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
-import { v4 as uuidv4 } from 'uuid';
 import { characterFactory, CharacterList } from "../services/characterFactory";
-import GameObject from "./GameObject";
+import { scene } from "../scenes/scene1";
+import Pawn from "./Pawn";
 
-export default class Character extends GameObject {
-    id: string = uuidv4();
-    position: Position
-    speed: number
+export default class Character extends Pawn {
     state: string = "idle"
     name: string
     controlled: boolean
 
-    constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean) {
-        super(position, 10);
-        this.position = position
-        this.speed = speed
+    constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean, radius: number) {
+        super(position, radius, "character", speed )
         this.name = name
         this.controlled = controlled
     }
-
-
-
-
-
+    
+    
     render() {
-        const isCollide = this.collisionBox.isCollide()
+        this.checkCollisions(scene)
         const translation = this.controlled ? this.getTranslation() : { direction: "" }
         
         if (translation.direction) {
@@ -49,12 +41,13 @@ export default class Character extends GameObject {
         var direction = 1
         translation.direction === "left" ? direction = -1 : direction = 1
         
-        var radius = 10
+        var radius = 20
 
         return `
         
-        <div class="character" id=${this.id} style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' >
-        <div style="position:absolute;border-radius: 50%;  width:${radius*2}px; height:${radius*2}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
+        <div class="character" style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' >
+        <div style="position:absolute;border-radius: 50%;  width:${radius*2}px; height:${radius*2}px; border: 1px solid ${this.isCollide ? "yellow" : "blue"}" ></div>
+        
         </div>
         
             `
