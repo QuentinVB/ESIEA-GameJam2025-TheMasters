@@ -27,6 +27,7 @@ export default class Character extends GameObject {
     render() {
         // const isCollide = this.collisionBox.isCollide()
         // console.log(isCollide)
+        const isCollide = this.collisionBox.isCollide()
         const translation = this.controlled ? this.getTranslation() : { direction: "" }
 
 
@@ -52,10 +53,14 @@ export default class Character extends GameObject {
         var direction = 1
         translation.direction === "left" ? direction = -1 : direction = 1
         
+        var radius = 10
 
         return `
-            <div style="position:absolute; top:${this.position.y}, left:${this.position.x}, width:${Object.getPrototypeOf(Character).radius}; height:${Object.getPrototypeOf(Character).radius}, border: 1px solid blue" ></div>
-            <div class="character" id=${this.id} style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' ></div>
+        
+        <div class="character" id=${this.id} style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' >
+        <div style="position:absolute;border-radius: 50%;  width:${radius*2}px; height:${radius*2}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
+        </div>
+        
             `
     }
 }

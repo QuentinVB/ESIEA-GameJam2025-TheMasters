@@ -16,7 +16,7 @@ export default class LightSource extends GameObject {
     const isCollide = this.collisionBox.isCollide()
     
     return (`
-            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.getRadius()/2}px; left:${this.position.x - this.getRadius()/2}px; width:${this.getRadius()}px; height:${this.getRadius()}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
+            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.getRadius()/2}px; left:${this.position.x - this.getRadius()/2}px; width:${this.getRadius()*2}px; height:${this.getRadius()*2}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
             <svg
             class="layer"
             width="100%"
