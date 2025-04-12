@@ -18,6 +18,6 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
-// document.addEventListener('keyup', function () {
-//     translation.direction = ""
-// });
+document.addEventListener('keyup', function () {
+    translation.direction = ""
+});

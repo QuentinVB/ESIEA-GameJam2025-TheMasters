@@ -12,7 +12,7 @@ export default class LightSource extends Pawn {
   render(children?: string): string {
     this.radius = this.getRadius()
     return (`
-            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.radius}px; left:${this.position.x - this.radius}px; width:${this.radius*2}px; height:${this.radius*2}px; border: 1px solid ${this.isCollide ? "yellow" : "blue"}" ></div>
+            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.radius}px; left:${this.position.x - this.radius}px; width:${this.radius*2}px; height:${this.radius*2}px; /*border: 1px solid ${this.isCollide ? "yellow" : "blue"}*/" ></div>
             <svg
             class="layer"
             width="100%"

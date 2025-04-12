@@ -1,23 +1,42 @@
 import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
 import { characterFactory, CharacterList } from "../services/characterFactory";
-import { scene } from "../scenes/scene1";
+import { mainCharacter, scene } from "../scenes/scene1";
 import Pawn from "./Pawn";
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Character extends Pawn {
     state: string = "idle"
     name: string
     controlled: boolean
+    id: string = uuidv4()
 
     constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean, radius: number) {
         super(position, radius, "character", speed )
         this.name = name
         this.controlled = controlled
     }
+
+    runForLife(target: Character) {
+        if (target.id === this.id) {
+            return
+        }
+        const dx = target.position.x - this.position.x;
+        const dy = target.position.y - this.position.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const directionX = dx / distance;
+        const directionY = dy / distance;
+        
+        this.position.x += directionX * this.speed;
+        this.position.y += directionY * this.speed;
+    }
     
     
     render() {
         this.checkCollisions(scene)
+        this.runForLife(mainCharacter)
+        
         const translation = this.controlled ? this.getTranslation() : { direction: "" }
         
         if (translation.direction) {

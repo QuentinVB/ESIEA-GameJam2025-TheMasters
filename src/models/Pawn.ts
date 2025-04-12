@@ -46,8 +46,12 @@ export default class Pawn implements IGameObject{
         this.position.x += (dx / distance) * (overlap );
         this.position.y += (dy / distance) * (overlap );
 
-        collider.position.x -= (dx / distance) * (overlap / 2);
-        collider.position.y -= (dy / distance) * (overlap / 2);   
+        if (collider.type === "monster" && this.type === "light") {
+            collider.position.x -= (dx / distance) * (overlap)*2;
+            collider.position.y -= (dy / distance) * (overlap)*2;   
+            
+        }
+
     }
     
 } 

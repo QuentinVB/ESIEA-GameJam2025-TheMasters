@@ -10,16 +10,17 @@ let monsterSpeed = 10
 
 const lights = [
     new LightSource(mousePosition, () => battery.level, "#FEEFD5"),
+    new LightSource({x:200, y: 200}, ()=> 100, "#EED094"),
 ]
 
 const characters = [
-    new Character({x:300, y : 400},10,() => translation, "billy", false, 20),
-    new Character({x:300, y : 370},10,() => translation, "timmie", false, 20),
-    new Character({x:300, y : 200},10,() => translation, "jimmy", false, 20),
+    new Character({x:300, y : 400},5,() => translation, "billy", false, 20),
+    new Character({x:300, y : 370},6,() => translation, "timmie", false, 20),
     new Character({ x: 300, y: 170 }, 10, () => translation, "jimmy", true, 20),
 ]
 
-export var target = null
+export var target = characters[0]
+export var mainCharacter = characters[2]
 
 const monsters = [
     new Monster({x:100,y:10}, 30, monsterSpeed),
