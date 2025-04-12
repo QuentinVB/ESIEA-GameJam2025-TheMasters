@@ -1,21 +1,16 @@
 import Position from "../interfaces/Position";
+import CollisionBox from "./CollisionBox";
 
 export default class LightSource {
-    position: Position;
-    radius: number;
-    sprite: string = "";
-    color: string;
+  constructor(
+    public position: Position,
+    public getRadius: () => number,
+    public color?: string
+  ) { }
 
-
-    constructor(position: Position, radius: number, color?: string) {
-        this.position = position
-        this.radius = radius
-        this.color = color || "#FEEFD5"
-
-    }
-
-    render(children?: string): string {
-        return (`
+  render(children?: string): string {
+    const radius = this.getRadius();
+    return (`
             <svg
             class="layer"
             width="100%"
@@ -26,15 +21,17 @@ export default class LightSource {
                 <feBlend in="SourceGraphic"  mode="color-dodge" />
                 <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
             </filter>
-            <svg x="${this.position.x - this.radius}" y="${this.position.y - this.radius}" >
+            <svg x="${this.position.x - radius * 2}" y="${this.position.y - radius * 2}" >
             
-            <circle cx="${this.radius}" cy="${this.radius}"  r="${this.radius}" fill="${this.color}" filter="url(#blurMe)" />
-            <svg x="${this.radius}" y="${this.radius}" >
+            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius}" fill="${this.color}EE" filter="url(#blurMe)" />
+            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius * 2}" fill="${this.color}05" filter="url(#blurMe)" />
+            <circle cx="${radius * 2}" cy="${radius * 2}" r="${radius * 1.5}" fill="${this.color}12" filter="url(#blurMe)" />
+            <svg x="${radius}" y="${radius}" >
             ${children}
             </svg>
             </svg>
             </svg>
             `)
-    }
+  }
 
 }

@@ -1,23 +1,21 @@
-import { Fire } from "./components/lightSource/fire";
-import { FlashLight } from "./components/lightSource/flashlight"
-import { mousePosition } from "./mouseManager";
+import { scene } from "./scenes/scene1";
+import { game } from "./services/gameProvider";
 
 
-
-
-const addAssets = () => {
-  const lights = document.querySelector<HTMLDivElement>('#light')
+const update = () => {
+  const app = document.querySelector<HTMLDivElement>('#app')
   var content = ""
-  content += Fire({ x: 500, y: 500 })
-  content += FlashLight(mousePosition)
-  lights!.innerHTML = content
+  scene.forEach(element => {
+    content += element.render()
+  })
+  app!.innerHTML = content
+  game.render()
 }
 
+
 const main = () => {
-  addAssets()
+  update()
   requestAnimationFrame(main)
-
-
 }
 
 requestAnimationFrame(main)

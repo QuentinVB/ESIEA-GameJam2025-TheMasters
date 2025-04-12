@@ -1,4 +1,4 @@
-import Position from "./interfaces/Position";
+import Position from "../interfaces/Position";
 
 export const mousePosition: Position = { x: 0, y: 0 }
 
