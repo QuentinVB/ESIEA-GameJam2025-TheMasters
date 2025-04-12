@@ -1,15 +1,22 @@
 import Position from "../interfaces/Position";
+import GameObject from "./GameObject";
 
-export default class LightSource {
+export default class LightSource extends GameObject {
   constructor(
+    
     public position: Position,
     public getRadius: () => number,
     public color?: string
-  ) { }
+  ) {
+    super(position, getRadius());
+  }
 
   render(children?: string): string {
     const radius = this.getRadius();
+    const isCollide = this.collisionBox.isCollide()
+    
     return (`
+            <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.getRadius()/2}px; left:${this.position.x - this.getRadius()/2}px; width:${this.getRadius()}px; height:${this.getRadius()}px; border: 1px solid ${isCollide ? "yellow" : "blue"}" ></div>
             <svg
             class="layer"
             width="100%"

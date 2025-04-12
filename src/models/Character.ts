@@ -2,8 +2,9 @@ import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
 import { v4 as uuidv4 } from 'uuid';
 import { characterFactory, CharacterList } from "../services/characterFactory";
+import GameObject from "./GameObject";
 
-export default class Character {
+export default class Character extends GameObject {
     id: string = uuidv4();
     position: Position
     speed: number
@@ -12,6 +13,7 @@ export default class Character {
     controlled: boolean
 
     constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean) {
+        super(position, 10);
         this.position = position
         this.speed = speed
         this.name = name
@@ -19,14 +21,16 @@ export default class Character {
     }
 
 
-    controleCharacter = () => {
-        
-    }
+
 
 
     render() {
-        const translation = this.controlled ? this.getTranslation() : {direction :""}
+        // const isCollide = this.collisionBox.isCollide()
+        // console.log(isCollide)
+        const translation = this.controlled ? this.getTranslation() : { direction: "" }
 
+
+        
         if (translation.direction) {
             this.state = "run"
         } else {
@@ -50,7 +54,8 @@ export default class Character {
         
 
         return `
-            <div class="character" id=${this.id} style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .05s steps(6) infinite; transform: scale(${direction}, 1); ' ></div>
+            <div style="position:absolute; top:${this.position.y}, left:${this.position.x}, width:${Object.getPrototypeOf(Character).radius}; height:${Object.getPrototypeOf(Character).radius}, border: 1px solid blue" ></div>
+            <div class="character" id=${this.id} style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' ></div>
             `
     }
 }
