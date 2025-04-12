@@ -4,7 +4,7 @@ export default class Game {
 
     render() {
         if (this.battery > 0) {
-            this.battery -= 0.01;
+            this.battery -= .01;
         }
         const batteryEvent = new CustomEvent("battery", {
             detail: {

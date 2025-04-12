@@ -1,19 +1,16 @@
-import IGameObject from "../interfaces/IGameObject";
 import Position from "../interfaces/Position";
 import Pawn from "./Pawn";
 
 export default class LightSource extends Pawn {
   color: string
 
-  constructor(position: Position, getRadius: () => number, color?: string) {
+  constructor(position: Position, public getRadius: () => number, color?: string) {
     super(position, getRadius(), "light", 0)
     this.color = color || "blue"
   }
 
   render(children?: string): string {
-    // const radius = this.getRadius();
-    // const isCollide = this.collisionBox.isCollide()
-    
+    this.radius = this.getRadius()
     return (`
             <div style="position:absolute;border-radius: 50%; top:${this.position.y - this.radius}px; left:${this.position.x - this.radius}px; width:${this.radius*2}px; height:${this.radius*2}px; border: 1px solid ${this.isCollide ? "yellow" : "blue"}" ></div>
             <svg

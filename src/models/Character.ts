@@ -46,7 +46,7 @@ export default class Character extends Pawn {
         return `
         
         <div class="character" style='background: url("${url}"); top : ${this.position.y}px; left : ${this.position.x}px; animation: sprite .5s steps(6) infinite; transform: scale(${direction}, 1); ' >
-        <div style="position:absolute;border-radius: 50%;  width:${radius*2}px; height:${radius*2}px; border: 1px solid ${this.isCollide ? "yellow" : "blue"}" ></div>
+        <div style="position:absolute;border-radius: 50%;  width:${radius*2}px; height:${radius*2}px; /*border: 1px solid ${this.isCollide ? "yellow" : "blue"}*/ " ></div>
         
         </div>
         
