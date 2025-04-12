@@ -25,12 +25,8 @@ export default class Character extends GameObject {
 
 
     render() {
-        // const isCollide = this.collisionBox.isCollide()
-        // console.log(isCollide)
         const isCollide = this.collisionBox.isCollide()
         const translation = this.controlled ? this.getTranslation() : { direction: "" }
-
-
         
         if (translation.direction) {
             this.state = "run"
