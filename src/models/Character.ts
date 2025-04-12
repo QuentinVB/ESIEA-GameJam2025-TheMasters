@@ -30,6 +30,20 @@ export default class Character {
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="100" height="100" x="${this.position.x}" y="${this.position.y}" />
 
-            </svg>`
+            </svg>
+            <div class="character"></div>
+            <style>
+            .character {
+                height: 32px;
+                width: 32px;
+                background: url("/sprites/Owlet_Monster/Owlet_Monster_Run_6.png");
+                animation: sprite .5s steps(6) infinite;
+                }
+                @keyframes sprite {
+                from { background-position: 0px; }
+                to { background-position: 192px; }
+                }
+            </style>
+            `
     }
 }
