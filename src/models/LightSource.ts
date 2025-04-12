@@ -1,5 +1,4 @@
 import Position from "../interfaces/Position";
-import CollisionBox from "./CollisionBox";
 
 export default class LightSource {
   constructor(

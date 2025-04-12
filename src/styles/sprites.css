@@ -1,0 +1,12 @@
+
+.character {
+    position: absolute;
+    height: 32px;
+    width: 32px;
+}
+
+@keyframes sprite {
+    from { background-position: 0px; }
+    to { background-position: 192px; }
+}
+            

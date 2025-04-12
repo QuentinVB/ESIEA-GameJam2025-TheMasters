@@ -15,7 +15,10 @@ const update = () => {
 
 const main = () => {
   update()
-  requestAnimationFrame(main)
+  setTimeout(() => {
+    
+    requestAnimationFrame(main)
+  }, 50);
 }
 
 requestAnimationFrame(main)

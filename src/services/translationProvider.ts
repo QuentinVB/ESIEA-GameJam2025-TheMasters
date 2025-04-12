@@ -4,26 +4,20 @@ export const translation = {
 }
 
 document.addEventListener('keydown', function (event) {
-    switch (event.key) {
-        case 'ArrowUp':
-        case 'z':
-            translation.direction = "up";
-            break;
-        case 'ArrowDown':
-        case 's':
-            translation.direction = "down";
-            break;
-        case 'ArrowLeft':
-        case 'q':
-            translation.direction = "left";
-            break;
-        case 'ArrowRight':
-        case 'd':
-            translation.direction = "right";
-            break;
+    if (event.key === "ArrowUp" || event.key === "z") {
+        translation.direction = "up";
+    }
+    if (event.key === "ArrowDown" || event.key === "s") {
+        translation.direction = "down";
+    }
+    if (event.key === "ArrowLeft" || event.key === "q") {
+        translation.direction = "left";
+    }
+    if (event.key === "ArrowRight" || event.key === "d") {
+        translation.direction = "right";
     }
 });
 
-document.addEventListener('keyup', function () {
-    translation.speed = 0;
-});
+// document.addEventListener('keyup', function () {
+//     translation.direction = ""
+// });
