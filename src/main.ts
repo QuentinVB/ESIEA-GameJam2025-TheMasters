@@ -1,24 +1,9 @@
-import { scene } from "./scenes/scene1";
-import { game } from "./services/gameProvider";
+import Engine from "./models/Engine";
+//import scene from "./scenes/scene0";
+import scene from "./scenes/scene1";
 
+const app = document.querySelector<HTMLDivElement>('#app')!;
 
-const update = () => {
-  const app = document.querySelector<HTMLDivElement>('#app')
-  var content = ""
-  scene.forEach(element => {
-    content += element.render()
-  })
-  app!.innerHTML = content
-  game.render()
-}
-
-
-const main = () => {
-  update()
-  setTimeout(() => {
-    
-    requestAnimationFrame(main)
-  }, 50);
-}
-
-requestAnimationFrame(main)
+const engine = new Engine(scene,app);
+engine.start();
+engine.run();

@@ -1,7 +1,7 @@
 import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
 import { characterFactory, CharacterList } from "../services/characterFactory";
-import { mainCharacter, scene } from "../scenes/scene1";
+import { mainCharacter, default as scene } from "../scenes/scene1";
 import Pawn from "./Pawn";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -34,7 +34,7 @@ export default class Character extends Pawn {
     
     
     render() {
-        this.checkCollisions(scene)
+        this.checkCollisions(scene.gameobjects)
         this.runForLife(mainCharacter)
         
         const translation = this.controlled ? this.getTranslation() : { direction: "" }

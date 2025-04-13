@@ -1,5 +1,5 @@
 import Position from "../interfaces/Position";
-import { target, scene } from "../scenes/scene1";
+import { target, default as scene } from "../scenes/scene1";
 import Character from "./Character";
 import Pawn from "./Pawn";
 
@@ -22,7 +22,7 @@ export default class Monster extends Pawn {
     
 
     render() {
-        this.checkCollisions(scene)
+        this.checkCollisions(scene.gameobjects)
         if(target)
             this.fallForDesire(target)
 

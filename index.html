@@ -12,18 +12,36 @@
 </head>
 
 <body>
-  <div class="ground" ></div>
-  <div id="app" class="fullLayer">
-  </div>
-  <div id="gui">
-    <div class="bottomBar">
-      <div id="battery">
+  <!--GameMenu-->
+  <section id="screen1">
+    <div class="title-screen">
+      <div class="title">
+        <h1>LIGHTBURN</h1>
+        <div><button id="play">
+            play
+          </button></div>
+        <p>Théau Nicolas/Quentin Vanbutsele - 2025</p>
       </div>
     </div>
-  </div>
+  </section>
+  <!--Game-->
+  <section id="screen2">
+    <div class="ground layer"></div>
+    <div id="app" class="fullLayer"></div>
+
+    <div id="gui">
+      <div class="bottomBar">
+        <div id="battery">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+
   <script src="image-sprite.min.js"></script>
   <script type="module" src="/src/main.ts"></script>
-  <script type="module" src="/src/components/flashlight/flashlight.ts"></script>
 </body>
 
 </html>

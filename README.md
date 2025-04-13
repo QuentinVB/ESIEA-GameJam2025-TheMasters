@@ -1,5 +1,7 @@
 # ESIEA-GameJam2025-TheMasters
 
+LIGHTBURN
+
 ## Règles
 
 - entre 11 avril 19h et 13 avril à 19h

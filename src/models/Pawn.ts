@@ -14,6 +14,10 @@ export default class Pawn implements IGameObject{
         this.type = type
         this.speed = speed
     }
+    render(): void {
+    }
+    update(): void {
+    }
 
 
     checkCollisions(scene: IGameObject[]): void {
