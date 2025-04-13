@@ -23,7 +23,7 @@ export default abstract class Scene implements IScene {
   elements!: IUpdatable[];
   public get gameobjects(): IGameObject[] {
     return this.elements.filter((obj): obj is IGameObject => {
-      return typeof (obj as any).draw === "function";
+      return typeof (obj as any).type === "string";
     });
   }
 

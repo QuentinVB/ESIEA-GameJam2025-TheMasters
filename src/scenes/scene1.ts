@@ -26,7 +26,7 @@ class Game extends Scene{
     constructor() {
         super();
         
-        let monsterSpeed = 10
+        let monsterSpeed = 5;
 
         battery = { level: this.battery }
 
@@ -68,6 +68,7 @@ class Game extends Scene{
 
     start() : void{
         document.getElementById("screen2")!.style.display="block";
+        console.log(this.gameobjects);
     }
     update(): void {
         if (this.battery > 0) {
