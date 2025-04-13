@@ -27,7 +27,7 @@ export default class Pawn implements IGameObject{
         for (const obj of gameobjects) {
             if (obj !== this && this.isCollidingWith(obj)) {
 
-                console.log("bump"+this.type+"and"+obj.type);
+                //console.log("bump"+this.type+"and"+obj.type);
 
                 if (this.type === "character" && obj.type === "light") {
                     

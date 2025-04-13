@@ -6,7 +6,6 @@ import Monster from "../models/Monster";
 import { mousePosition } from "../services/mouseManager";
 import { translation } from "../services/translationProvider";
 import Scene from "../models/Scene";
-import Engine from "../models/Engine";
 
 export var target: Character ;
 export var mainCharacter: Character;
@@ -26,7 +25,7 @@ class Game extends Scene{
     constructor() {
         super();
         
-        let monsterSpeed = 5;
+        let monsterSpeed = 3;
 
         battery = { level: this.battery }
 
@@ -68,7 +67,8 @@ class Game extends Scene{
 
     start() : void{
         document.getElementById("screen2")!.style.display="block";
-        console.log(this.gameobjects);
+        this.engine?.sounds["crickets"].play()
+
     }
     update(): void {
         if (this.battery > 0) {

@@ -1,6 +1,6 @@
 import { IUpdatable } from "../interfaces/IUpdatable";
 import Scene from "../models/Scene";
-import { enterFullScreen } from "../services/browserManager";
+//import { enterFullScreen } from "../services/browserManager";
 
 class Menu extends Scene{
     teardown(): void {
@@ -20,7 +20,7 @@ class Menu extends Scene{
         document.getElementById("screen1")!.style.display="block";
 
         const play= document.getElementById("play");
-        play!.addEventListener("click",e=>{
+        play!.addEventListener("click",_=>{
             console.log("play");
             //enterFullScreen(document.documentElement);
             this.engine?.loadScene(1);
@@ -28,7 +28,7 @@ class Menu extends Scene{
         });
     }
 
-    render(children?: string): string {
+    render(): string {
         return ``;
     }
 

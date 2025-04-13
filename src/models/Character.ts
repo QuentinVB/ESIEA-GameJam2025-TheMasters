@@ -1,10 +1,12 @@
 import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
 import { characterFactory, CharacterList } from "../services/characterFactory";
-import { mainCharacter, default as scene } from "../scenes/scene1";
+import { mainCharacter} from "../scenes/scene1";
 import Pawn from "./Pawn";
 import { v4 as uuidv4 } from 'uuid';
 import Scene from "./Scene";
+
+const EPSILON = 45;
 
 export default class Character extends Pawn {
     state: string = "idle"
@@ -25,6 +27,8 @@ export default class Character extends Pawn {
         const dx = target.position.x - this.position.x;
         const dy = target.position.y - this.position.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if(distance< EPSILON) return;
 
         const directionX = dx / distance;
         const directionY = dy / distance;
