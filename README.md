@@ -2,9 +2,14 @@
 
 LIGHTBURN
 
+## How to
+
+Lancez run.bat
+
 ## Soundeffects
 
 [sound-effects.bbcrewind.co.uk](https://sound-effects.bbcrewind.co.uk)
+[https://universal-soundbank.com](https://universal-soundbank.com)
 
 ## Règles
 
@@ -71,7 +76,3 @@ si +50% des potes sont sauvés tu survis
 - [ ] Orage qui gronde, pluie et les éclairs (qui illuminent)
 - [ ] Les bestioles font du bruit quand elle sont découverte
 - [ ] Setup
-
-Quentin dispo a 23h
-
-

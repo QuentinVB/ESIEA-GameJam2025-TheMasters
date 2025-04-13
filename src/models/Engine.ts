@@ -42,6 +42,7 @@ export default class Engine {
    * then render each element and call the redraw of the DOM using `innerHTML`
    */
   update() {
+    this.scene.update();
     //update
     this.scene.elements.forEach((element) => {
       content += element.update();

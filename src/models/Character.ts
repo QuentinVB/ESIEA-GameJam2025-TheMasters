@@ -1,10 +1,10 @@
 import Position from "../interfaces/Position";
 import Translation from "../interfaces/Translation";
 import { characterFactory, CharacterList } from "../services/characterFactory";
-import { mainCharacter} from "../scenes/scene1";
 import Pawn from "./Pawn";
 import { v4 as uuidv4 } from 'uuid';
 import Scene from "./Scene";
+import { mainCharacter } from "../scenes/scene1";
 
 const EPSILON = 45;
 
@@ -35,12 +35,13 @@ export default class Character extends Pawn {
         
         this.position.x += directionX * this.speed;
         this.position.y += directionY * this.speed;
+        return distance;
     }
     
     
     render() {
-        this.checkCollisions(this.scene.gameobjects)
-        this.runForLife(mainCharacter)
+        this.checkCollisions(this.scene.gameobjects);
+        this.runForLife(mainCharacter);
         
         const translation = this.controlled ? this.getTranslation() : { direction: "" }
         

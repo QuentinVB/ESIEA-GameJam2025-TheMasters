@@ -80,6 +80,12 @@ class Game extends Scene{
             },
         });
 
+        if(Math.random()<0.01)
+        {
+            console.log("growl")
+            this.engine?.sounds["growl"].play();
+
+        }
         document.dispatchEvent(batteryEvent);
 
         (document.getElementById("battery") as HTMLElement).style.width = this.battery + "px";

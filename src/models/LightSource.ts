@@ -21,7 +21,7 @@ export default class LightSource extends Pawn {
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <filter id="blurMe">
-                <feBlend in="SourceGraphic"  mode="color-dodge" />
+                <feBlend in="SourceGraphic"  mode="color-burn" />
                 <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
             </filter>
             <svg x="${this.position.x - this.radius * 2}" y="${this.position.y - this.radius * 2}" >

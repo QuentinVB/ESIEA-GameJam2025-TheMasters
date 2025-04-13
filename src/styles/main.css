@@ -71,5 +71,5 @@ section
   height: 100%;
   background-color: #080808;
   mix-blend-mode:color-burn;
-
+  opacity: 0.9;
 }

@@ -5,8 +5,14 @@ import scene1 from "./scenes/scene1";
 const backgroundSound = new Audio("/sounds/bbc_crickets-s_nhu0509310.mp3");
 backgroundSound.loop =true;
 backgroundSound.volume = 0.2;
+
+const growl = new Audio("/sounds/growl.mp3");
+growl.volume = 0.2;
+growl.playbackRate = 0.75;
+
 const sounds = {
-    "crickets":backgroundSound
+    "crickets":backgroundSound,
+    "growl":growl
 }
 
 const app = document.querySelector<HTMLDivElement>('#app')!;
