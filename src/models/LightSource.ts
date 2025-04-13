@@ -1,11 +1,12 @@
 import Position from "../interfaces/Position";
 import Pawn from "./Pawn";
+import Scene from "./Scene";
 
 export default class LightSource extends Pawn {
   color: string
 
-  constructor(position: Position, public getRadius: () => number, color?: string) {
-    super(position, getRadius(), "light", 0)
+  constructor(position: Position, public getRadius: () => number,scene:Scene, color?: string) {
+    super(position, getRadius(), "light", 0,scene)
     this.color = color || "blue"
   }
 

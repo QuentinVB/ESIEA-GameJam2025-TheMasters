@@ -4,6 +4,7 @@ import { characterFactory, CharacterList } from "../services/characterFactory";
 import { mainCharacter, default as scene } from "../scenes/scene1";
 import Pawn from "./Pawn";
 import { v4 as uuidv4 } from 'uuid';
+import Scene from "./Scene";
 
 export default class Character extends Pawn {
     state: string = "idle"
@@ -11,8 +12,8 @@ export default class Character extends Pawn {
     controlled: boolean
     id: string = uuidv4()
 
-    constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean, radius: number) {
-        super(position, radius, "character", speed )
+    constructor(position: Position, speed: number, public getTranslation: () => Translation, name: string, controlled: boolean, radius: number,scene:Scene) {
+        super(position, radius, "character", speed,scene )
         this.name = name
         this.controlled = controlled
     }
@@ -34,7 +35,7 @@ export default class Character extends Pawn {
     
     
     render() {
-        this.checkCollisions(scene.gameobjects)
+        this.checkCollisions(this.scene.gameobjects)
         this.runForLife(mainCharacter)
         
         const translation = this.controlled ? this.getTranslation() : { direction: "" }

@@ -6,6 +6,7 @@ import Monster from "../models/Monster";
 import { mousePosition } from "../services/mouseManager";
 import { translation } from "../services/translationProvider";
 import Scene from "../models/Scene";
+import Engine from "../models/Engine";
 
 export var target: Character ;
 export var mainCharacter: Character;
@@ -13,6 +14,7 @@ export var battery :any;
 
 
 class Game extends Scene{
+
 
     elements: IUpdatable[];
     time: number = 0
@@ -29,27 +31,27 @@ class Game extends Scene{
         battery = { level: this.battery }
 
         const lights = [
-            new LightSource(mousePosition, () => battery.level, "#FEEFD5"),
-            new LightSource({x:200, y: 200}, ()=> 100, "#EED094"),
+            new LightSource(mousePosition, () => battery.level, this,"#FEEFD5"),
+            new LightSource({x:200, y: 200}, ()=> 100,this, "#EED094"),
         ]
 
         const characters = [
-            new Character({x:300, y : 400},5,() => translation, "billy", false, 20),
-            new Character({x:300, y : 370},6,() => translation, "timmie", false, 20),
-            new Character({ x: 300, y: 170 }, 10, () => translation, "jimmy", true, 20),
+            new Character({x:300, y : 400},5,() => translation, "billy", false, 20,this),
+            new Character({x:300, y : 370},6,() => translation, "timmie", false, 20,this),
+            new Character({ x: 300, y: 170 }, 10, () => translation, "jimmy", true, 20,this),
         ]
 
         target = characters[0];
         mainCharacter = characters[2];
 
         const monsters = [
-            new Monster({x:100,y:10}, 30, monsterSpeed),
-            new Monster({x:2,y:30}, 30, monsterSpeed),
-            new Monster({x:3,y:30}, 30, monsterSpeed),
-            new Monster({x:4,y:30}, 30, monsterSpeed),
-            new Monster({x:5,y:30}, 30, monsterSpeed),
-            new Monster({x:6,y:30}, 30, monsterSpeed),
-            new Monster({x:7,y:30}, 30, monsterSpeed),
+            new Monster({x:100,y:10}, 30, monsterSpeed,this),
+            new Monster({x:2,y:30}, 30, monsterSpeed,this),
+            new Monster({x:3,y:30}, 30, monsterSpeed,this),
+            new Monster({x:4,y:30}, 30, monsterSpeed,this),
+            new Monster({x:5,y:30}, 30, monsterSpeed,this),
+            new Monster({x:6,y:30}, 30, monsterSpeed,this),
+            new Monster({x:7,y:30}, 30, monsterSpeed,this),
         ]
 
         this.elements= [
@@ -64,7 +66,7 @@ class Game extends Scene{
     render(): void {
     }
 
-    start(): void {
+    start() : void{
         document.getElementById("screen2")!.style.display="block";
     }
     update(): void {
@@ -81,14 +83,15 @@ class Game extends Scene{
 
         (document.getElementById("battery") as HTMLElement).style.width = this.battery + "px";
     }
+    teardown(): void {
+        document.getElementById("screen2")!.style.display="none";
+        
+    }
 }
 
-
-
-const game = new Game()
 document.addEventListener("battery", (event) => {
     const customEvent = event as CustomEvent<{ battery: number }>;
     battery.level = customEvent.detail.battery;
 });
 
-export default game;
+export default Game;

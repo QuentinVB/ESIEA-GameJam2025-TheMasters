@@ -1,13 +1,16 @@
-import { Scene } from "../interfaces/IScene";
+import Scene from "./Scene";
 
 export default class Engine
 {
+    scenes : Scene[];
     scene : Scene;
     ctx: HTMLDivElement;
+    gameLoopHandle : number | undefined;
 
-    constructor(scene:Scene,contexte:HTMLDivElement)
+    constructor(scenes:Scene[],contexte:HTMLDivElement,sceneToStartIdx:number)
     {
-        this.scene=scene;
+      this.scenes = scenes
+        this.scene=scenes[sceneToStartIdx] ;
         this.ctx = contexte;
     }
 
@@ -16,7 +19,7 @@ export default class Engine
      */
     start()
     {
-        this.scene.start();
+        this.scene.init(this);
     }
 
     /**
@@ -27,7 +30,7 @@ export default class Engine
         //TODO : improve performances ?
         const main = () => {
             this.update()
-            setTimeout(() => {
+            this.gameLoopHandle = setTimeout(() => {
           
               requestAnimationFrame(main)
             }, 50);
@@ -51,5 +54,18 @@ export default class Engine
         content += element.render();
       })
       this.ctx!.innerHTML = content
+  }
+
+  loadScene(sceneIdx:number){
+    //stop
+    clearTimeout(this.gameLoopHandle);
+    this.scene.teardown();
+
+    //load
+    this.scene = this.scenes[sceneIdx];
+    
+    //run
+    this.scene.init(this);
+    this.run();
   }
 }

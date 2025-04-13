@@ -3,6 +3,9 @@ import Scene from "../models/Scene";
 import { enterFullScreen } from "../services/browserManager";
 
 class Menu extends Scene{
+    teardown(): void {
+        document.getElementById("screen1")!.style.display="none";
+    }
 
     elements: IUpdatable[];
     /**
@@ -13,10 +16,14 @@ class Menu extends Scene{
         this.elements=[];
     }
     start() : void{
+
+        document.getElementById("screen1")!.style.display="block";
+
         const play= document.getElementById("play");
         play!.addEventListener("click",e=>{
             console.log("play");
             //enterFullScreen(document.documentElement);
+            this.engine?.loadScene(1);
             //backgroundSound.play();
         });
     }
@@ -32,4 +39,4 @@ class Menu extends Scene{
 
 
 
-export default new Menu()
+export default Menu;

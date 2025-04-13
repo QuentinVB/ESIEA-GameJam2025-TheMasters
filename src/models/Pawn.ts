@@ -1,5 +1,6 @@
 import IGameObject from "../interfaces/IGameObject";
 import Position from "../interfaces/Position";
+import Scene from "./Scene";
 
 export default class Pawn implements IGameObject{
     position: Position;
@@ -7,12 +8,14 @@ export default class Pawn implements IGameObject{
     type: string;
     speed: number;
     isCollide: boolean = false
-
-    constructor(position: Position, radius: number, type: string, speed: number) {
+    scene :Scene;
+    
+    constructor(position: Position, radius: number, type: string, speed: number,scene:Scene) {
         this.position = position
         this.radius = radius
         this.type = type
         this.speed = speed
+        this.scene = scene;
     }
     render(): void {
     }

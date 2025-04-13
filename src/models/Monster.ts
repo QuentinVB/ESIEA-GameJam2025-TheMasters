@@ -1,11 +1,12 @@
 import Position from "../interfaces/Position";
-import { target, default as scene } from "../scenes/scene1";
+import { target } from "../scenes/scene1";
 import Character from "./Character";
 import Pawn from "./Pawn";
+import Scene from "./Scene";
 
 export default class Monster extends Pawn {
-    constructor(position: Position, radius: number, speed: number) {
-        super(position, radius, "monster", speed)
+    constructor(position: Position, radius: number, speed: number,scene:Scene) {
+        super(position, radius, "monster", speed,scene)
     }
 
     fallForDesire(target: Character) {
@@ -22,7 +23,7 @@ export default class Monster extends Pawn {
     
 
     render() {
-        this.checkCollisions(scene.gameobjects)
+        this.checkCollisions(this.scene.gameobjects)
         if(target)
             this.fallForDesire(target)
 
